@@ -12,39 +12,38 @@ public class Main {
         String name = sc.nextLine();
         String customerId = sc.nextLine();
         BankAccount account = new BankAccount(name, customerId);
-        account.PerformAction();
+        account.performAction();
     }
 }
 
 class BankAccount {
-    double bal;
+    double accountBalance;
     double prevTrans;
-    String customerName;
-    String customerId;
+    private String customerName;
+    private String customerId;
 
     BankAccount(String customerName, String customerId) {
         this.customerName = customerName;
         this.customerId = customerId;
     }
 
-
-    void deposit(double amount) {
+    private void deposit(double amount) {
         if (amount != 0) {
-            bal += amount;
+            accountBalance += amount;
             prevTrans = amount;
         }
     }
 
-    void withdraw(double amt) {
-        if (amt != 0 && bal >= amt) {
-            bal -= amt;
+    private void withdraw(double amt) {
+        if (amt != 0 && accountBalance >= amt) {
+            accountBalance -= amt;
             prevTrans = -amt;
-        } else if (bal < amt) {
+        } else if (accountBalance < amt) {
             System.out.println("Bank balance insufficient");
         }
     }
 
-    void getPreviousTrans() {
+    private void getPreviousTrans() {
         if (prevTrans > 0) {
             System.out.println("Deposited: " + prevTrans);
         } else if (prevTrans < 0) {
@@ -54,7 +53,7 @@ class BankAccount {
         }
     }
 
-    void PerformAction() {
+    public void performAction() {
         char option;
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome " + customerName);
@@ -81,7 +80,7 @@ class BankAccount {
             switch (option) {
                 case 'a':
                     System.out.println("......................");
-                    System.out.println("Balance = " + df.format(bal));
+                    System.out.println("Balance = " + df.format(accountBalance));
                     System.out.println("......................");
                     System.out.println("\n");
                     break;
@@ -108,7 +107,6 @@ class BankAccount {
                     System.out.println("......................");
                     System.out.println("\n");
                     break;
-
                 case 'e':
                     System.out.println("......................");
                     break;
