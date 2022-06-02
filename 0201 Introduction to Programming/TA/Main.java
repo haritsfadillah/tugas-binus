@@ -61,7 +61,7 @@ class BankAccount {
         System.out.println("\n");
 
         do {
-            System.out.println("********************************************");
+            System.out.println("\n********************************************");
             System.out.println("Choose an option");
             System.out.println("a) Check Balance");
             System.out.println("b) Deposit Amount");
